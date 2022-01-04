@@ -1,0 +1,127 @@
+body{
+  background: lightblue;  
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+input{
+    display: none;
+}
+.starbtn{
+    position: relative;
+    width: 250px;
+    height: 85px;
+    border-radius: 15px;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    z-index: 2;
+    box-shadow: o 5px 50px rgba(0 ,0, 0, 0.096);
+}
+.heart{
+    position: absolute;
+    left: 15%;
+    top: 55%;
+    font-size: 45px;
+    transform: translateY(-50%);
+    color: rgb(223, 223, 223);
+    z-index: 1;
+}
+@keyframes shake {
+    0%{
+        transform: scale3d(1, 1, 1);
+    }
+    30%{
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40%{
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50%{
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65%{
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    75%{
+        transform: scale3d(1.05, 0.95, 1);
+    }
+    10%{
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes move {
+    10%{
+        transform: translateX(-330%) scale(1.2);
+        left: 20%;
+        opacity: 1;
+    }
+    50%{
+        transform: translateY(300%);
+        opacity: 1;
+    }
+    75%{
+        transform: translateY(100%);
+        left: 70%;
+        opacity: 1;
+    }
+    85%{
+        transform: translateX(100%);
+        left: 70%;
+    }
+    100%{
+        left: 66%;
+        opacity: 0;
+    }
+}
+input:checked + .heart{
+    animation: move .7s ease-in forwards;
+    color: rgb(255, 74, 89);
+}
+input:checked ~ .active-heart{
+    color: rgb(255, 74, 89);
+    transition-delay: .7s;
+    animation: shake 0.8s .2s forwards;
+    animation-delay: .7s;
+}
+input:checked ~ .btn-text{
+    transform: translateX(-45%);
+    transition-delay: .4s;
+}
+input:checked ~ .btn-text{
+    left: 23%;
+}
+input:checked ~ .btn-text span{
+    transform: translateX(-45%);
+    transition-delay: .4s;
+}
+.btn-text{
+    position: absolute;
+    left: 50%;
+    width: 130px;
+    height: 85px;
+    background: rgb(255, 74, 89);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    overflow-x: hidden;
+}
+.btn-text span{
+    color: rgb(255, 255, 255);
+    transform: translateX(55%);
+    font-size: 35px;
+    padding: 20px;
+    font-family: sans-serif;
+    transition: .2s;
+    user-select: none;
+}
+.active-heart{
+    position: absolute;
+    right: 15%;
+    top: 20%;
+    font-size: 50px;
+    z-index: -1;
+    color: rgb(219, 219, 219);
+}
